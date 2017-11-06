@@ -1,0 +1,479 @@
+\documentclass[]{article}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage{graphicx}
+
+\usepackage[francais]{babel}
+
+\usepackage{times}
+%\usepackage{rotate}
+%\usepackage{lscape}
+
+\usepackage{color}
+
+\usepackage{needspace}
+
+\usepackage{float}
+
+\newcommand{\placeholder}[1]{{\noindent \color{red}[ #1 ]}}
+
+\begin{document}
+
+%\frontmatter          % for the preliminaries
+%\pagestyle{headings}  % switches on printing of running heads
+%\mainmatter              % start of the contributions
+
+\title{
+{\Huge Projet d'optimisation linéaire}\\
+\smallskip
+{\small Activité d'Apprentissage \textsf{I-MARO-035}}\\
+}
+
+\author{
+Membres du groupe:\\
+\textbf{DOM Eduardo , PALGEN Arnaud}\\
+}
+
+
+\date{Année Académique : 2017 - 2018\\
+BAC 2 en Sciences Informatiques\\
+\vspace{1cm}
+Faculté des Sciences, Université de Mons}
+
+
+%\title{Projet de Génie Logiciel\\
+%Rapport de Planification\\
+%Année Académique ****-****\\
+%}
+%\title{{\Huge Rapport de Planification}\\
+%Projet de Génie Logiciel\\
+%{\small
+%	Unités d'Enseignement \textsf{US-B2-SCINFO-009-M}, \textsf{US-B3-SCMATH-013-M}, \textsf{US-M1-SCINFO-045-M}\\
+%	Activité d'Apprentissage \textsf{S-INFO-015}
+%}\\
+%
+%\date{Année Académique 2015-2016\\
+%Bachelier en Sciences Informatiques\\
+%Bloc complémentaire en Master I Informatique\\
+%\vspace{1cm}
+%Faculté des Sciences, Université de Mons}
+%
+%
+%
+%%\titlerunning{Rapport de planification -- \textbf{ANNEE ACADEMIQUE}}
+%
+%
+%\authorrunning{Groupe \textbf{**} - \textbf{ANNEE D'ETUDES}} 
+
+%\institute{\textbf{ANNEE D'ETUDES (par exemple BAC 2 INFO ou ANNEE PREPA)}\\
+%Faculté des Sciences, Université de Mons\\
+%\email{\{ PRENOM1.NOM1 $\mid$ PRENOM2.NOM2 \}@student.umons.ac.be}
+%VOUS POUVEZ UTILISER UN AUTRE ADRESSE MAIL QUE CELUI DE L'UMONS SI VOUS LE PREFERIEZ
+%}
+
+\maketitle              % typeset the title of the contribution
+
+\bigskip
+\begin{center} \today \end{center}
+\begin{abstract}
+Ce \emph{rapport} est rendu dans le cadre de l'AA \textsf{I-MARO-035} "Optimisation linéaire", dispensé par le Prof. \emph{Nicolas Gillis} en année académique 2017-2018. Le but de ce rapport est de présenter la réalisation de notre projet.
+\end{abstract}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{sec:intro}
+
+%\placeholder{CECI EST UN \textbf{CANEVAS} POUR VOTRE RAPPORT DE PLANIFICATION. VOUS DEVRIEZ REMPLACER TOUTES LES OCCURRENCES DE \textsf{$\backslash$placeholder\{\ldots\}} (TEXTE EN ROUGE) AVANT DE RENDRE VOTRE RAPPORT DE PLANIFICATION!}
+
+\subsection{Objectifs}
+
+
+%\emph{Quels sont le contexte et les objectifs du projet?}
+
+Le travail s'inscrit dans le cadre du cours de génie logiciel.
+
+Il consiste à planifier, modéliser et implémenter un Laser Maze selon les consignes présentes sur Moodle. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exigences fonctionnelles}
+
+Il nous est demandé de développer un moteur de jeu qui permet au joueur de réaliser les différents niveaux inclus (au moins 10) dont chacun doit être dans un fichier de description au format XML.
+Chaque étudiant doit implémenter individuellement une extension ainsi que des niveaux correspondant à celle-ci.
+Ces extensions doivent toutes être intégrées au jeu et doivent pouvoir
+être activées et désactivées simultanément. Les exigences détaillées sont présentes sur Moodle.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exigences non-fonctionnelles}
+
+La fonctionnalité, la complétude et la qualité des livrables seront évaluées par
+les enseignants après l'échéance imposée pour chaque étape clé.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Contraintes de temps}
+
+
+
+Premièrement, il nous est demandé de respecter les dates d'écheance des étapes clés (Table 8). En plus, nous devons concilier ce projet avec le reste des cours et des éventuels projets (Optimisation linéaire, Base de données, Réseaux, ...). Donc, nous disposons essentiellement de notre temps libre et des vacances pour le développement du projet.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Contraintes de budget}
+
+Aucun achat n'est requis pour la réalisation de ce projet.
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ressources}\label{sec:organisation}
+
+\subsection{Les ressources humaines (personnel)}
+
+%\placeholder{
+%Qui va travailler sur le projet? Quels sont les membres de l'équipe? Y a-t-il d'autres parties prenantes (stakeholders) qui ont un intérêt dans le projet? (N'oubliez pas le professeur et les assistants.) Quel est le r\^ole et la responsabilité de chacun? Quel est l'effort fourni par chaque personne (par exemple, plein temps, mi-temps à 50\%, etc.)
+%Si vous le désirez vous pouvez utiliser un tableau ici, comme la table~\ref{tab:RH}.
+%}end of placeholder
+
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{ | p{2.5cm}|p{2.5cm}|p{2cm}|p{4cm}|p{4cm} |}
+\hline
+Nom & R\^ole & durée & Responsabilité & Pourcentage du temps (Par rapport au temps total) \\
+\hline
+%line 1
+AMEZIAN Aziz & Développeur & 8 mois & Planification, Modélisation, Implémentaion & 33 \% \\
+\hline
+%line 2
+DHEUR Victor & Développeur & 8 mois & Planification, Modélisation, Implémentaion & 33 \% \\
+\hline
+%line 3
+DOM Eduardo & Développeur & 8 mois & Planification, Modélisation, Implémentaion & 33 \% \\
+\hline
+%line 4
+MENS Tom & Professeur & 8 mois & Supervision & * \\
+\hline
+DUBRULLE Jérémy & Assistant & 8 mois & Supervision & * \\
+\hline
+DEVILLEZ Gauvain & Assistant & 8 mois & Supervision & * \\
+\hline
+\end{tabular}
+\end{center}
+   \caption{Ressources humaines.}
+   \label{tab:RH}
+\end{table}
+
+* Il nous est impossible de connaitre le pourcentage de temps pour les professeurs et assistants.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Les ressources logicielles}
+
+
+%Pour la planification, nous avons choisi d'utiliser ProjectLibre.
+
+%Pour la modélisation, nous comptons utiliser comme logiciels VisualParadigm et Yakindu.
+
+%Finalement, pour l'implémentation, nous devons utiliser Java 8. En ce qui concerne l'aspect graphique, il nous est demandé d'utiliser la librairie LibGDX(version 1.9.6). Comme IDE, nous utilisons Eclipse et Intellij Idea.
+
+%Pour le gestion des versions, nous utilisons Git.
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|p{2cm}|p{5cm}|p{5cm}| p{1cm}| p{2cm}| }
+\hline
+Nom & Type & Rôle & Version & License \\
+\hline\hline
+ProjectLibre & Outil de planification & Planification & 1.7.0 & CPAL \\
+\hline
+Visual Paradigm  & Environnement de développement UML & Modélisation UML & 14.2 & Community Edition\\
+\hline
+Yakindu & Outil de modélisation de diagrammes d'états & Modélisation de diagrammes d'états  & 2.9.3 & Eclipse Public License    \\
+\hline
+
+Java  & Langage de programmation & Implémentation & 1.8 & GNU GPL \\
+\hline
+
+libGDX & Framework de développement de jeux & Implémentation & 1.9.6 & Apache License 2.0\\
+\hline
+
+Intellij IDEA & IDE & Implémentation & 2017.2.1 & Community Edition\\
+\hline
+
+Eclipse & IDE & Implémentation & 4.7 & Eclipse Public License\\
+\hline
+
+Git & Gestionnaire de versions & Gestion de versions & 2.14.2 & GNU GPLv2\\
+\hline
+
+
+
+\hline
+\end{tabular}
+\end{center}
+   \caption{Différentes ressources logicielles utilisées}
+   \label{tab:TEC}
+\end{table}
+
+
+%\placeholder{
+%Y a-t-il des logiciels supplémentaires à procurer? Estimer le délai et les co\^ut de ces logiciels.
+%}%end of placeholder
+
+%\placeholder{
+%Y a-t-il des contraints sur les logiciels ou matériels à utiliser (par exemple, à cause de compatibilité et interopérabilité avec d'autres syst\`emes existants)? Les choix effectués ici devront \^etre conformes aux exigences de la section~\ref{sec:intro}.
+%}%end of placeholder
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Les ressources matérielles}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|p{2cm}|p{3.5cm}|p{1cm}| p{5cm}| p{2cm}| p{2cm} | }
+\hline
+Nom & Processeur & RAM & GPU & OS & Disque dur \\
+\hline\hline
+Dom Eduardo & Intel Core i5 7300HQ & 6Go & NVIDIA GeForce GTX 1050 & Windows 10 & HDD 1To \\
+\hline
+Dheur Victor  & Intel Core i5 7200U &  8Go & NVIDIA GeForce 940MX & Windows 10 & SSD 512Go \\
+\hline
+Amezian Aziz  & Intel Core i7 7500U & 8Go & NVIDIA GeForce 920MX & Windows 10 &  SSD 120Go    \\
+\hline
+\end{tabular}
+\end{center}
+   \caption{Spécifications des machines des membres du groupe}
+   \label{tab:TEC}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Analyse des risques}
+
+\subsection{Identification des risques }\label{sec:riskident}
+
+
+Nous avons exprimé l'importance d'un risque en fonction de la probabilité et la severité de celui-ci.
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{|p{3cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+\hline
+ & Très basse & Basse & Modérée & Haute & Très haute \\
+\hline\hline
+Non significative & 1 & 1 & 2 & 3 & 4 \\
+\hline
+Faible & 1 & 2 & 3 & 4 & 5 \\
+\hline
+Tolérable & 2 & 3 & 4 & 5 & 5 \\
+\hline
+Sérieuse & 3 & 4 & 5 & 5 & 5 \\
+\hline
+Catastrophique & 4 & 5 & 5 & 5 & 5 \\
+\hline
+\end{tabular}
+\end{center}
+   \caption{Importance des risques.}
+   \label{tab:importance}
+\end{table}
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{|p{3cm}|p{2.5cm}||p{3cm}|p{4cm}|p{1.5cm}|}
+\hline
+\textbf{Risque} & Catégorie & Probabilité & Sévérité & Importance\\
+\hline\hline
+Mauvaise interprétation des consignes & Personnel & Modérée &  Catastrophique (Le projet ne respecterait plus les critères) & 5\\
+\hline
+Mauvaise gestion du temps & Personnel & Modérée & Catastrophique (Impossibilité de respecter les deadlines) & 5\\
+\hline
+Présence de bugs importants & Logiciel & Basse &  Catastrophique (Certaines fonctionnalités pourraient ne pas satisfaire les consignes) & 5\\
+\hline
+Surcharge de travail due à d'autres cours & Personnel & Haute &  Sérieuse (Cela limite le temps dédié au projet) & 5\\
+\hline
+Indisponibilité d'un des membres du groupe & Personnel & Basse &  Sérieuse (Cela augmenterait la charge de travail des autres membres) & 4\\
+\hline
+
+Mauvaise communication entre les membres du groupe& Personnel & Basse &  Sérieuse (Cela entrainerait des incohérences au niveau du code, et également une mauvaise coordination dans la gestion du temps.) & 4\\
+\hline
+Panne d'une de nos machines & Materiel & Basse &  Tolérable (Possible perte du projet) & 3\\
+\hline
+
+
+
+\end{tabular}
+\end{center}
+   \caption{Identification des risques génériques, triés par importance.}
+   \label{tab:risquesgeneriques}
+\end{table}
+
+
+
+%à titre d'information, voici quelques exemples de risques génériques souvent rencontrés dans un projet informatique:
+%\begin{itemize}
+%\item difficultés techniques imprévues (probl\`eme de versions, probl\`eme de compatibilité, matériel ou logiciel défectueux, perte de données, ...)
+%\item difficulté de compréhension (documentation non disponible en fran\c{c}ais, documentation absent, sujet ou domaine complex et difficile à ma\^itriser, ...)
+%\item probl\`eme de ressources (matérial non disponible, indisponibilité du directeur ou autres personnes impliquées dans le travail, manque de communication)
+%\item probl\`eme d'horaire (manque de temps, horaire de cours inflexible, maladie, ...)
+%\item probl\`eme du produit final (incompl\`ete, peu performant, instable, défectueux, manque de documentation, difficile à utiliser ou maintenir, probl\`eme de fiabilité ou sécurité, ...)
+%\end{itemize}
+%
+%Cette liste \textbf{n'est pas exhaustive} et peut varier selon le contexte du travail. Ce qui est important se sont les risques qui sont vraiment spécifiques à votre projet.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\needspace{40\baselineskip}
+
+
+
+%\placeholder{
+%Pour chaque risque que vous avez retenu dans la section \ref{sec:riskident} comme étant suffisamment important, expliquez comment vous comptez 
+%\begin{enumerate}
+%\item éviter (ou réduire la probabilité) que le risque se produira
+%\item vérifier si le risque s'est produit
+%\item résoudre le risque (si possible) ou réduire l'ampleur et l'impact du risque au moment qu'il se produira
+%\end{enumerate}
+%}%end of placeholder
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|p{3cm}|p{2.5cm}||p{3cm}|p{4cm}|p{1.5cm}|}
+\hline
+\textbf{Risque} & Catégorie & Probabilité & Sévérité & Importance\\
+\hline\hline
+Non-détection de niveaux impossibles par le level checker & Logiciel & Modérée &  Catastrophique (Un tel dysfonctionnement est inacceptable vu le rôle du level checker) & 5\\
+\hline
+
+Création de niveaux incohérents par le level editor & Logiciel & Modérée &  Catastrophique (Un tel dysfonctionnement est inacceptable vu le rôle du level editor) & 5\\
+\hline
+Connaissance insuffisante de LibGDX & Personnel & Modérée &  Tolérable (Mauvaise utilisation des outils) & 4\\
+\hline
+
+Conflits entre les différentes extensions & Personnel & Basse &  Sérieuse (C'est gênant mais l'utilisation de chaque extension de façon isolée règlerait le problème) & 4\\
+\hline
+Lenteur du level checker sur certains niveaux & Logiciel & Modérée &  Tolérable (Cela pourrait être gênant mais ça reste dans les limites de l'acceptable) & 4\\
+\hline
+
+
+\end{tabular}
+\end{center}
+   \caption{Identification des risques spécifiques, triés par importance.}
+   \label{tab:risquesgeneriques}
+\end{table}
+
+
+\subsection{Gestion des risques}\label{sec:riskmanagement}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|p{3cm}|p{2.5cm}||p{3cm}|p{3cm}|p{2.5cm}|}
+\hline
+\textbf{Risque} & Prévention & Vérification & Solution\\
+\hline\hline
+Panne d'une de nos machines & Utilisation d'un logiciel de gestion de versions & / &  Recuperation des données grâce au logiciel de gestion des versions\\
+\hline
+Indisponibilité d'un des membres du groupe & / & Communication entre les membres du groupe & Nouvelle planification du projet\\
+\hline
+Mauvaise interprétation des consignes & Poser des questions aux professeurs et assistants & Questions aux professeurs/assistants &  Recommencer les parties du projet correspondantes\\
+\hline
+Mauvaise gestion du temps & Bonne planification & Se référer au rapport de planification &  Nouvelle planification du projet (Meilleure gestion du temps)\\
+\hline
+Présence de bugs importants & Tests manuels et Tests unitaires & Tests manuels et Tests unitaires &  Débogage \\
+\hline
+Surcharge de travail due à d'autres cours & Bonne gestion du temps & Bonne communication entre les membres du groupe & S'y prendre à l'avance\\
+\hline
+Connaissance insuffisante de LibGDX & Lecture préalable de la documentation de LibGDX & Niveau d'aisance lors de l'utilisation de LibGDX & Lecture de la documentation , tutoriaux , forums d'aide\\
+\hline
+Mauvaise communication entre les membres du groupe & Mise au point régulière de l'avancement du projet & Cela se reflète sur la qualité du projet &  Meilleure communication\\
+\hline
+Conflits entre les différentes extensions & Lecture préalable des consignes & Lors de l'implémentation des extensions ou de l'éxécution du programme &  Implémenter des extensions n'ayant pas de conflits\\
+\hline
+Lenteur du level checker sur certains niveaux & Test de quelques niveaux avec le level checker & Test exhaustif des niveaux avec le level checker & Une meilleure implémentation du level checker\\
+\hline
+Non-détection de niveaux impossibles par le level checker & Tests unitaires et manuels & Créer un niveau impossible et utiliser le level checker & Une meilleure implémentation du level checker\\
+\hline
+Création de niveaux incohérents par le level editor & Tests unitaire et manuels & Essayer de créer des niveaux incohérents & Une meilleure implémentation du level editor\\
+\hline
+
+
+\end{tabular}
+\end{center}
+   \caption{Gestion des risques}
+   \label{tab:risquesgeneriques}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{samepage}
+\section{Répartition du travail}
+
+\subsection{Work Breakdown Structure}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|p{1cm}|p{4cm}||p{2cm}|p{2.5cm}|p{2cm}|}
+\hline
+\textbf{ID} & T\^ache & Durée & Responsable & \% travail\\
+\hline\hline
+T1 & Planification & 24 jours & Dom Eduardo, Amezian Aziz, Dheur Victor & 20 \%\\
+\hline
+T2 & Modélisation & 40 jours & Dom Eduardo, Amezian Aziz, Dheur Victor & 20 \%\\
+\hline
+T3 & Jeu de base : logique & 40 jours & Dom Eduardo, Amezian Aziz, Dheur Victor & 30 \%\\
+\hline
+T4 & Jeu de base : graphisme & 40 jours & Dom Eduardo, Amezian Aziz, Dheur Victor & 30 \%\\
+\hline
+T5 & Test du jeu de base et débogage & 4 jours & Dom Eduardo, Amezian Aziz, Dheur Victor & 20 \%\\
+\hline
+T6 & Editeur : logique & 30 jours & Amezian Aziz & 30 \%\\
+\hline
+T7 & Editeur : graphisme & 15 jours & Amezian Aziz & 30 \%\\
+\hline
+T8 & Extension couleurs et intensité : logique & 25 jours & Dom Eduardo & 30 \%\\
+\hline
+T9 & Extension couleurs et intensité : graphisme & 20 jours & Dom Eduardo & 30 \%\\
+\hline
+T10 & Level Checker : logique & 35 jours & Dheur Victor & 30 \%\\
+\hline
+T11 & Level Checker : graphisme & 10 jours & Dheur Victor & 30 \%\\
+\hline
+T12 & Intégration des extensions & 3 jours & Dom Eduardo, Amezian Aziz, Dheur Victor & 60 \%\\
+\hline
+T13 & Tests finaux et débogage & 8 jours & Dom Eduardo, Amezian Aziz, Dheur Victor & 40 \%\\
+\hline
+\end{tabular}
+\end{center}
+   \caption{Tableau des t\^aches.}
+   \label{tab:WBS}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Etapes clés }
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|p{2cm}||p{7cm}|p{6cm}|}
+\hline
+Date & Etape clé & Livrables\\
+\hline\hline
+22/10/2017 & Planification & Rapport de planification  \\
+\hline
+03/12/2017 & Modélisation &  Rapport de modélisation et maquette
+de l’interface utilisateur  \\
+\hline
+30/03/2018 & Implémentation & Code source, code compilé, tests unitaires, JavaDoc, vidéo d’utilisation, rapport
+d’implémentation  \\
+\hline
+\end{tabular}
+\end{center}
+   \caption{Tableau d'étapes clés.}
+   \label{tab:TEC}
+\end{table}
+
+\end{samepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -1,0 +1,140 @@
+\documentclass[]{article}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+\usepackage[francais]{babel}
+
+\usepackage{times}
+%\usepackage{rotate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{color}
+
+\usepackage{needspace}
+
+\usepackage{float}
+
+\newcommand{\placeholder}[1]{{\noindent \color{red}[ #1 ]}}
+
+\begin{document}
+
+%\frontmatter          % for the preliminaries
+%\pagestyle{headings}  % switches on printing of running heads
+%\mainmatter              % start of the contributions
+
+\title{
+{\Huge Projet d'optimisation linéaire}\\
+\smallskip
+{\small Activité d'Apprentissage \textsf{I-MARO-035}}\\
+}
+
+\author{
+Membre du groupe:\\
+\textbf{DOM Eduardo Massamesso}\\
+\textbf{Matricule : 161974}
+}
+
+
+\date{Année Académique : 2018 - 2019\\
+BAC 2 en Sciences Informatiques\\
+\vspace{1cm}
+Faculté des Sciences, Université de Mons}
+
+
+%\title{Projet de Génie Logiciel\\
+%Rapport de Planification\\
+%Année Académique ****-****\\
+%}
+%\title{{\Huge Rapport de Planification}\\
+%Projet de Génie Logiciel\\
+%{\small
+%	Unités d'Enseignement \textsf{US-B2-SCINFO-009-M}, \textsf{US-B3-SCMATH-013-M}, \textsf{US-M1-SCINFO-045-M}\\
+%	Activité d'Apprentissage \textsf{S-INFO-015}
+%}\\
+%
+%\date{Année Académique 2015-2016\\
+%Bachelier en Sciences Informatiques\\
+%Bloc complémentaire en Master I Informatique\\
+%\vspace{1cm}
+%Faculté des Sciences, Université de Mons}
+%
+%
+%
+%%\titlerunning{Rapport de planification -- \textbf{ANNEE ACADEMIQUE}}
+%
+%
+%\authorrunning{Groupe \textbf{**} - \textbf{ANNEE D'ETUDES}} 
+
+%\institute{\textbf{ANNEE D'ETUDES (par exemple BAC 2 INFO ou ANNEE PREPA)}\\
+%Faculté des Sciences, Université de Mons\\
+%\email{\{ PRENOM1.NOM1 $\mid$ PRENOM2.NOM2 \}@student.umons.ac.be}
+%VOUS POUVEZ UTILISER UN AUTRE ADRESSE MAIL QUE CELUI DE L'UMONS SI VOUS LE PREFERIEZ
+%}
+
+\maketitle              % typeset the title of the contribution
+
+\bigskip
+\begin{center} \today \end{center}
+\begin{abstract}
+Ce \emph{rapport} est rendu dans le cadre de l'AA \textsf{I-MARO-035} "Optimisation linéaire", dispensé par le Prof. \emph{Nicolas Gillis} en année académique 2018-2019. Le but de ce rapport est de présenter la réalisation de mon projet.
+\end{abstract}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Description du problème}\label{sec:intro}
+
+%\placeholder{CECI EST UN \textbf{CANEVAS} POUR VOTRE RAPPORT DE PLANIFICATION. VOUS DEVRIEZ REMPLACER TOUTES LES OCCURRENCES DE \textsf{$\backslash$placeholder\{\ldots\}} (TEXTE EN ROUGE) AVANT DE RENDRE VOTRE RAPPORT DE PLANIFICATION!}
+
+\subsection{Objectifs}
+
+
+%\emph{Quels sont le contexte et les objectifs du projet?}
+
+L'objectif est de déchiffrer un message binaire crypté qu'Alice souhaite envoyer à Bob via un canal perturbant très fortement un petit nombre des entrées du message. 
+
+\section{Questions}
+
+\subsection{Modélisation du problème}
+Je sait que le problème à résoudre est sous la forme : 
+\begin{equation}
+\underset{x' \ \in \ \mathbb{R}^{p}}{min} \ \sum_{i = 1}^{m} |Ax'_{i} - y'_{i}| \ \ \ tel \ que \ \ \ 0\leq x' \leq 1,  
+\end{equation}
+Je cherche à le mettre sous forme standard, de ce fait, les contraintes sont les suivantes : 
+\begin{equation}
+\forall i \ \in \ \lbrace 1,...,p \rbrace , \ x'_{i} \geq \ 0
+\end{equation}
+\begin{equation}
+\forall i \  \ \lbrace 1,...,p \rbrace , \ -x'_{i} \geq \ -1
+\end{equation}
+(2) est une contrainte déjà remplie sous forme standard, car les variables y sont toutes positives, elle est donc redondante. Les valeurs absolues ne faisant pas partie de la forme standard, je dois m'en débarrasser. Par le cours, je sais que je peux remplacer $|x|$ par une nouvelle variable $t_{i}$  en imposant les contraintes $t_{i} \ \geq \ x$ et  $t_{i} \ \geq \ -x$, ce qui est équivalent à $max \lbrace x,-x \rbrace$. J'obtiens donc le nouveau problème suivant : 
+\begin{equation}
+\underset{x' \ \in \ \mathbb{R}^{p}}{min} \ \sum_{i = 1}^{m} t_{i}  
+\end{equation}
+Il a les contraintes suivantes : 
+\begin{equation}
+\forall i \  \ \lbrace 1,...,p \rbrace , \ -x'_{i} \geq \ -1
+\end{equation}
+\begin{equation}
+\forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i} - Ax' \ \geq \ -y'
+\end{equation}
+\begin{equation}
+\forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i} + Ax' \ \geq \ y'
+\end{equation}
+Il me faut maintenant introduire une variable d'écart afin de transformer les inégalités en égalité. De plus, les variables positives n'étant pas supportées par la forme standard, il faut substituer $t_ Le nouvelles contraintes sont les suivantes : 
+
+\begin{equation}
+\forall i \  \ \lbrace 1,...,p \rbrace , \ -x'_{i} - q_{i} = \ -1
+\end{equation}
+\begin{equation}
+\forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i} - Ax' - r_{i} = \ -y'
+\end{equation}
+\begin{equation}
+\forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i} + Ax'  - s_{i}  = \ y'
+\end{equation}
+\end{document}

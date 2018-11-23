@@ -2,8 +2,8 @@
 % 
 %   min_{0 <= xprime <= 1} ||A*xprime - yprime||_1 
 
-function xprime = votrealgorithme(A1, yprime, integer=false) 
-
+function xprime = votrealgorithme(A1, yprime, isIntOptimal=false) 
+param.msglev = 2;
 [m, p] = size(A1);
 
 % Objectif : xi->p tpi->m tmi->m qi->m ri->m si->p
@@ -27,15 +27,15 @@ lb = zeros(1, 2*p+4*m);         % lower bound
 ub = Inf(1, 2*p+4*m);           % upper bound
 ctype = repmat("S", 1, 2*m+p);  % equality constraints
 
-if(integer)
-  display("resolving with integer variables")
+if(isIntOptimal)
+  display("resolving with isIntOptimal variables")
 else
   display("resolving with continuous variables")
 endif
-% x integer and others continuous
-vartype = [repmat(ifelse(integer, "I", "C"), 1, p) repmat("C", 1, 4*m+p)]; % C for continuous variable, I for integer variable
+% x isIntOptimal and others continuous
+vartype = [repmat(ifelse(isIntOptimal, "I", "C"), 1, p) repmat("C", 1, 4*m+p)]; % C for continuous variable, I for isIntOptimal variable
 
 % Résolution :
-variables = glpk(C, A2, B, lb, ub, ctype, vartype);
+variables = glpk(C, A2, B, lb, ub, ctype, vartype,1,param);
 xprime_lin = variables(1:p, 1);
 xprime = round(abs(xprime_lin)); % abs here is just to get 0 instead of -0 that can happen with some very low errors

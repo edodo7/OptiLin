@@ -1,3 +1,5 @@
+
+
 \documentclass[]{article}
 
 % Use utf-8 encoding for foreign characters
@@ -101,10 +103,16 @@ L'objectif est de déchiffrer un message binaire crypté qu'Alice souhaite envoy
 \section{Questions}
 
 \subsection{Modélisation du problème}
-Je sait que le problème à résoudre est sous la forme : 
+Il faut d'abord minimiser la norme 1 de l'erreur. Pour récupérer le message d'Alice, il faut résoudre le problème d'optimisation suivant : 
+\begin{equation}
+\underset{x' \ \in \ \mathbb{R}^{p}}{min} \ \sum_{i = 1}^{m} |Ax'_{i} - y'_{i}| \ \ \ tel \ que \ \ \ x' \in \lbrace 0,1 \rbrace^{p},  
+\end{equation}
+(1) est un problème difficile à résoudre en pratique, il faut donc utiliser la relaxation continue suivante : 
 \begin{equation}
 \underset{x' \ \in \ \mathbb{R}^{p}}{min} \ \sum_{i = 1}^{m} |Ax'_{i} - y'_{i}| \ \ \ tel \ que \ \ \ 0\leq x' \leq 1,  
 \end{equation}
+et d'arrondir la solution obtenue. Si le bruit n'est pas trop important , $x \approx  x' $, ce qui permet de récupérer le message d'Alice.
+\subsection{Forme standard}
 Je cherche à le mettre sous forme standard, de ce fait, les contraintes sont les suivantes : 
 \begin{equation}
 \forall i \ \in \ \lbrace 1,...,p \rbrace , \ x'_{i} \geq \ 0
@@ -112,7 +120,7 @@ Je cherche à le mettre sous forme standard, de ce fait, les contraintes sont le
 \begin{equation}
 \forall i \  \ \lbrace 1,...,p \rbrace , \ -x'_{i} \geq \ -1
 \end{equation}
-(2) est une contrainte déjà remplie sous forme standard, car les variables y sont toutes positives, elle est donc redondante. Les valeurs absolues ne faisant pas partie de la forme standard, je dois m'en débarrasser. Par le cours, je sais que je peux remplacer $|x|$ par une nouvelle variable $t_{i}$  en imposant les contraintes $t_{i} \ \geq \ x$ et  $t_{i} \ \geq \ -x$, ce qui est équivalent à $max \lbrace x,-x \rbrace$. J'obtiens donc le nouveau problème suivant : 
+(3) est une contrainte déjà remplie sous forme standard, car les variables y sont toutes positives, elle est donc redondante. Les valeurs absolues ne faisant pas partie de la forme standard, je dois m'en débarrasser. Par le cours, je sais que je peux remplacer $|x|$ par une nouvelle variable $t_{i}$  en imposant les contraintes $t_{i} \ \geq \ x$ et  $t_{i} \ \geq \ -x$, ce qui est équivalent à $max \lbrace x,-x \rbrace$. J'obtiens donc le nouveau problème suivant : 
 \begin{equation}
 \underset{x' \ \in \ \mathbb{R}^{p}}{min} \ \sum_{i = 1}^{m} t_{i}  
 \end{equation}
@@ -126,15 +134,28 @@ Il a les contraintes suivantes :
 \begin{equation}
 \forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i} + Ax' \ \geq \ y'
 \end{equation}
-Il me faut maintenant introduire une variable d'écart afin de transformer les inégalités en égalité. De plus, les variables positives n'étant pas supportées par la forme standard, il faut substituer $t_ Le nouvelles contraintes sont les suivantes : 
-
+Il me faut maintenant introduire des variables d'écarts positives $a_{i}$,$b_{i}$ et $c_{i}$  afin de transformer les inégalités en égalité. De plus, les variables positives n'étant pas supportées par la forme standard, il faut substituer $t_{i}$ par les deux nouvelles variables positives $t_{i}^{+} - t_{i}^{-}$. Le nouveau problème est le suivant: 
 \begin{equation}
-\forall i \  \ \lbrace 1,...,p \rbrace , \ -x'_{i} - q_{i} = \ -1
+\underset{x' \ \in \ \mathbb{R}^{p}}{min} \ \sum_{i = 1}^{m} t_{i}^{+} - t_{i}^{-} \ \ \ tel \ que,  
 \end{equation}
 \begin{equation}
-\forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i} - Ax' - r_{i} = \ -y'
+\forall i \  \ \lbrace 1,...,p \rbrace , \ -x'_{i} - a_{i} = \ -1
 \end{equation}
 \begin{equation}
-\forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i} + Ax'  - s_{i}  = \ y'
+\forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i}^{+} - t_{i}^{-} - Ax' - b_{i} = \ -y'
 \end{equation}
+\begin{equation}
+\forall i \  \ \lbrace 1,...,p \rbrace , \ t_{i}^{+} - t_{i}^{-} + Ax'  - c_{i}  = \ y'
+\end{equation}
+\subsection{Déchiffrage}
+J'utilise Octave et la fonction \textbf{glpk} en y entrant les contraintes mentionnées ci-dessus afin de déchiffrer le message d'Alice contenu dans le fichier \textit{messagedAlice.mat} . L'implémentation de l'algorithme est fournie en annexe. Le message déchiffré d'Alice est le suivant : \textit{Alice vous félicite!}
+\subsection{Sommet du polyèdre}
+L'algorithme implémenté n'utilise pas la solution optimale du problème relaxé mais une solution arrondie.  Dans le cas où le sommet en nombres
+entiers le plus proche se trouve en dehors du polyèdre des contraintes,certaines contraintes pourraient probablement ne plus être respectées après l'arrondi de la solution.Celle-ci pourrait donc ne pas être une solution du problème initial.En conclusion, la solution pourrait ne pas être un sommet du polyèdre. 
+\subsection{Génération de message}
+Après génération du message, je constate qu'au delà de 40\% de bruit, il devient très difficile de déchiffrer le message étant donné qu'a partir de 40\% , la réussite du déchiffrage est arbitraire. Si  la solution du problème relaxé est différente de la solution arrondie, alors
+je peux utiliser l’arrondi de la solution mais je n’ai pas de certitude sur l’optimalité de cette solution.
+\subsection{Variables binaires}
+Si la valeur de l'argument \textbf{isIntOptimal} de \textit{votralgorithme} est vraie, \textbf{glpk} me renvoie une valeur en nombres entiers. L'arrondi de la solution n'est donc plus nécessaire. La résolution peut	être rapide si l'algorithme du simplexe retourne une valeur en nombres entiers. Mais si cette solution est en nombres réels , il faut utiliser l'algorithme du \textit{Branch and Bound}. Celui-ci est plus lent que le simplexe, mais il permet de déchiffrer un message contenant plus de bruit. 
 \end{document}
+
